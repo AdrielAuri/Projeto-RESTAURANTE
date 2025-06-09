@@ -10,7 +10,7 @@ function Cardapio() {
   useEffect(() => {
     const carregarPratos = async () => {
       try {
-        const response = await axios.get("https://atividade-29-05-2025.onrender.com/restaurante")
+        const response = await axios.get("https://atv-restaurante.onrender.com/restaurante")
         setPratos(response.data)
       } catch (error) {
         setPratos([])
