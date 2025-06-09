@@ -10,12 +10,12 @@ import "./styles.css";
 
 function FormularioCadastro() {
   const navigate = useNavigate()
-  const [nomePrato, setnomePrato] = useState('');
+  const [nomePrato, setNomePrato] = useState('');
   const [descricao, setDescricao] = useState('');
   const [preco, setPreco] = useState('');
   const [categoria, setCategoria] = useState('');
   const [disponibilidade, setDisponibilidade] = useState('');
-  const [urlImagem, seturlImagem] = useState('');
+  const [urlImagem, setUrlImagem] = useState('');
 
 
   const { exibirMensagem, mensagem, tipoMensagem, visivel, fecharMensagem } =
@@ -35,12 +35,12 @@ const response = await axios.post('https://atv-restaurante.onrender.com/restaura
         response.data.mensagem || "Prato cadastrado com sucesso!",
         "sucesso"
       )
-      setnomePrato('')
+      setNomePrato('')
       setDescricao('')
       setPreco('')
       setCategoria('')
       setDisponibilidade('')
-      seturlImagem('')
+      setUrlImagem('')
     } catch (error) {
       let erroMsg = "Erro ao conectar ao servidor.";
       if (error.response && error.response.data) {
@@ -68,7 +68,7 @@ const response = await axios.post('https://atv-restaurante.onrender.com/restaura
           id="nome"
           placeholder="Nome do Prato"
           value={nomePrato}
-          onChange={(e) => setnomePrato(e.target.value)}
+          onChange={(e) => setNomePrato(e.target.value)}
           required
         />
         <textarea
@@ -110,7 +110,7 @@ const response = await axios.post('https://atv-restaurante.onrender.com/restaura
           id="imagemPrato"
           placeholder="URL da imagem"
           value={urlImagem}
-          onChange={(e) => seturlImagem(e.target.value)}
+          onChange={(e) => setUrlImagem(e.target.value)}
           required
         />
         {urlImagem && <img src={urlImagem} alt="Pré-visualização" style={{ marginTop: "10px", maxWidth: "300px" }} />}
