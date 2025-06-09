@@ -1,22 +1,25 @@
-# Etapa 1: Build
-FROM ubuntu:latest AS build
-RUN apt-get update && apt-get install -y openjdk-17-jdk maven
+# Etapa 1: Build do projeto
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Define um diretório de trabalho consistente
+# Define o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia tudo para /app
-COPY src/main/java/com/example/atividade_deploy_29_05 .
+# Copia o projeto inteiro (pom.xml + src/ + etc.)
+COPY . .
 
-# Constrói o projeto
+# Constrói o projeto e ignora os testes
 RUN mvn clean install -DskipTests
 
-# Etapa 2: Execução
-FROM openjdk:17-jdk-slim
+# Etapa 2: Imagem final para execução
+FROM eclipse-temurin:17-jdk
 
-EXPOSE 8080
+WORKDIR /app
 
-# Copia o .jar gerado do diretório correto
+# Copia o JAR gerado na etapa de build
 COPY --from=build /app/target/*.jar app.jar
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+# Expõe a porta 8080
+EXPOSE 8080
+
+# Comando de inicialização da aplicação
+ENTRYPOINT ["java", "-jar", "app.jar"]
