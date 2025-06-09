@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pagina-Cardapio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding: 30px 15px;
+}
+
+/* CONTAINER DO CARDÁPIO */
+.container-cardapio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* LOGO */
+.container-cardapio .logo {
+  width: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+.container-cardapio .logo:hover {
+  transform: scale(1.05);
+}
+
+/* TÍTULO */
+.container-cardapio .titulo {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* BOTÃO CADASTRAR */
+.btn-cadastrar {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+.btn-cadastrar:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+/* BOTÃO FIXO FLUTUANTE (OPCIONAL) */
+.btn_cadastrar {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: #222;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease, background-color 0.2s;
+}
+
+.btn_cadastrar:hover {
+  transform: scale(1.1);
+  background-color: #000;
+  cursor: pointer;
+}
